@@ -1,0 +1,92 @@
+1. Write pseudocode for bubble sort. 
+
+FUNCTION bubbleSort(collection)
+
+    REPEAT 
+        SET swapped to false 
+
+        FOR i = FIRST INDEX of collection to LAST INDEX of collection - 1
+            IF collection[i] > collection[i + 1] THEN 
+                SET temp to collection[i]
+                SET collection[i] to collection[i+1]
+                SET collection[i+1] to temp
+                SET swapped to true 
+            END IF 
+        END FOR 
+    WHILE (swapped is false) 
+
+    RETURN collection 
+
+END FUNCTION
+
+
+2. Write pseudocode for quicksort.
+
+FUNCTION quickSort(array, leftIndex, rightIndex)
+    SET array length to len 
+    INIT pivot, partitionIndex
+
+    IF(leftIndex < rightIndex)  
+        SET last index of the array (rightIndex) to pivot 
+        CALL partition(arr, pivot, leftIndex, rightIndex) to partitionIndex 
+
+        CALL quickSort(array, leftIndex, partitionIndex - 1) 
+        CALL quickSort(array, partitionIndex + 1, rightIndex) 
+    END IF 
+
+    return array  
+
+END FUNCTION
+
+
+FUNCTION partition(array, pivotIndex, leftIndex, rightIndex)
+
+    SET pivotValue to array[pivotIndex] 
+    INIT partitionIndex 
+    SET leftIndex to partitionIndex (initialize as 0 index)
+
+    FOR i = leftIndex (the first index of array) to rightIndex(the last index of array)
+        IF pivotValue is greater than selected value in array 
+            CALL swap (array, selected value's index, partitionIndex) 
+            INCREMENT partitionIndex 
+        END IF 
+    END FOR 
+
+    swap(array, rightIndex(pivotValue), partitionIndex)  
+
+    return partitionIndex 
+END FUNCTION 
+
+
+FUNCTION swap(array, index1, index2) 
+
+    SET temp to array[index1]
+    SET array[index2] to array[index1]
+    SET temp to array[index2] 
+
+END FUNCTION
+
+3. We talked about time complexity in a previous checkpoint, and how to get an idea of the efficiency of an algorithm. 
+After looking at the pseudocode for the above sorting methods, identify why merge sort and quick sort are much more efficient than the others. 
+Walking through each algorithm with a few sample collections may help.
+
+Merge sort and quick sort run on log linear growth rate (O(n log n)) which divide the data into halve
+based on n times and combine the pairs. For the rest of the comparing sort methods, they run on 
+quadratic growth rate (O(n^2)) meaning, on average, they have to loop the entire collection twice. 
+ 
+
+4. All of the sorts addressed in this checkpoint are known as comparison sorts. 
+Research bucket sort and explain how it works. What is the ideal input for bucket sort?
+
+1) Create an empty box 
+2) Loop through the original array and put each object into bucket 
+3) Sort each of the non-empty bucket 
+4) Check each of the bucket and then put all objects into the original array   
+
+Fairly dispersed integers over an interval are ideal input. 
+If each number is not dispersed, one bucket will end up contain many values and it takes time
+to sort inside of each bucket compared to well distributed integers. 
+
+
+
+
